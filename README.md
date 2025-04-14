@@ -1,0 +1,29 @@
+Este projeto é uma API RESTful desenvolvida em Spring Boot para gerenciar duas entidades: Pessoa e Trabalho.
+A API permite realizar operações CRUD (Create, Read, Update, Delete) em ambas as entidades, seguindo os princípios de Programação Orientada a Objetos (POO) e utilizando DTOs (Data Transfer Objects). 
+As entidades possuem um relacionamento OneToMany: uma Pessoa pode ter vários Trabalhos, e cada Trabalho está associado a uma Pessoa
+# Endpoints da API
+
+## Endpoints para Pessoa
+
+| **Método HTTP** | **URL**                         | **Descrição**                   | **Corpo da Requisição (JSON)**                                    | **Resposta Esperada (Código e Exemplo)**                                                                                         |                                                                                                                                                                            
+|-----------------|---------------------------------|---------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **GET**         | `http://localhost:8080/pessoas` | Lista todas as pessoas          | -                                                                  | `200 OK` <br> `[{ "id": 1, "nome": "Lucas Almeida", "email": "lucas@email.com" }]`                                                 |                                                                                               
+| **GET**         | `http://localhost:8080/pessoas/1` | Busca uma pessoa por ID         | -                                                                  | `200 OK` <br> `{ "id": 1, "nome": "Lucas Almeida", "email": "lucas@email.com" }`                                                  |                                                                                                    
+| **POST**        | `http://localhost:8080/pessoas` | Cria uma nova pessoa            | `{ "nome": "Lucas Almeida", "email": "lucas@email.com" }`          | `201 Created` <br> `{ "id": 1, "nome": "Lucas Almeida", "email": "lucas@email.com" }`                                             |                                                                    
+| **PUT**         | `http://localhost:8080/pessoas/1` | Atualiza uma pessoa existente   | `{ "nome": "Lucas Silva", "email": "lucas.silva@email.com" }`      | `200 OK` <br> `{ "id": 1, "nome": "Lucas Silva", "email": "lucas.silva@email.com" }`                                              |                                                   
+| **DELETE**      | `http://localhost:8080/pessoas/1` | Deleta uma pessoa               | -                                                                  | `204 No Content` (sem corpo na resposta)                                                                                           |                                                                                                          
+
+---
+
+## Endpoints para Trabalho
+
+| **Método HTTP** | **URL**                         | **Descrição**                   | **Corpo da Requisição (JSON)**                                    | **Resposta Esperada (Código e Exemplo)**                                                                                         |                                                                                                                                                                            |
+|-----------------|---------------------------------|---------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **GET**         | `http://localhost:8080/trabalhos` | Lista todos os trabalhos        | -                                                                  | `200 OK` <br> `[{ "id": 1, "titulo": "Desenvolvimento Web", "descricao": "Site com React", "pessoaId": 1 }]`                                                                                                                                                     
+| **GET**         | `http://localhost:8080/trabalhos/1` | Busca um trabalho por ID        | -                                                                  | `200 OK` <br> `{ "id": 1, "titulo": "Desenvolvimento Web", "descricao": "Site com React", "pessoaId": 1 }`                                                                                                                                    
+| **POST**        | `http://localhost:8080/trabalhos` | Cria um novo trabalho           | `{ "titulo": "Desenvolvimento Web", "descricao": "Site com React", "pessoaId": 1 }` | `201 Created` <br> `{ "id": 1, "titulo": "Desenvolvimento Web", "descricao": "Site com React", "pessoaId": 1 }`                                                            
+| **PUT**         | `http://localhost:8080/trabalhos/1` | Atualiza um trabalho existente  | `{ "titulo": "Desenvolvimento Full Stack", "descricao": "Site com React e Spring", "pessoaId": 1 }` | `200 OK` <br> `{ "id": 1, "titulo": "Desenvolvimento Full Stack", "descricao": "Site com React e Spring", "pessoaId": 1 }`                                               
+| **DELETE**      | `http://localhost:8080/trabalhos/1` | Deleta um trabalho              | -                                                                  | `204 No Content` (sem corpo na resposta)                                                                                                                                                                                           
+
+---
+
